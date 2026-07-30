@@ -1,4 +1,4 @@
-const CACHE = "auto-spotter-v1";
+const CACHE = "auto-spotter-v2";
 const ASSETS = [
   "./index.html",
   "./style.css",

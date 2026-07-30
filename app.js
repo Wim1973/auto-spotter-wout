@@ -196,6 +196,9 @@ function openDetail(id, spots) {
 }
 
 closeDetailBtn.addEventListener("click", () => { overlay.hidden = true; });
+overlay.addEventListener("click", (e) => {
+  if (e.target === overlay) overlay.hidden = true;
+});
 deleteBtn.addEventListener("click", async () => {
   if (!currentDetailId) return;
   if (!confirm("Deze spot verwijderen?")) return;
