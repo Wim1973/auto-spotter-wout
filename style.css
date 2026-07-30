@@ -1,0 +1,194 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --card: #1e293b;
+  --card-border: #334155;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --accent: #ef4444;
+  --accent-text: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding-bottom: 2rem;
+}
+
+.app-header {
+  padding: 1rem 1rem calc(1rem + env(safe-area-inset-top, 0px));
+  text-align: center;
+}
+.app-header h1 { margin: 0; font-size: 1.4rem; }
+
+main {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+#spot-form {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.photo-label { display: block; cursor: pointer; }
+.photo-preview {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border: 2px dashed var(--card-border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0b1220;
+}
+.photo-preview img { width: 100%; height: 100%; object-fit: cover; }
+#photo-placeholder { color: var(--muted); text-align: center; padding: 1rem; }
+#photo-input { display: none; }
+
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+.field-grid label.full-width { grid-column: 1 / -1; }
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: #0b1220;
+  color: var(--text);
+}
+textarea { resize: vertical; }
+
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem;
+  cursor: pointer;
+}
+#save-btn {
+  background: var(--accent);
+  color: var(--accent-text);
+  margin-top: 0.3rem;
+}
+#save-btn:active { opacity: 0.85; }
+
+#ai-analyze-btn {
+  background: #1e293b;
+  color: var(--text);
+  border: 1px solid var(--card-border);
+}
+.ai-status {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0 0.8rem;
+}
+.list-header h2 { margin: 0; font-size: 1.1rem; }
+#count-badge {
+  background: var(--card-border);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.empty-state {
+  color: var(--muted);
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+#spot-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+
+.spot-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.spot-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+.spot-card .spot-info { padding: 0.5rem 0.6rem; }
+.spot-card .spot-merk { font-weight: 700; font-size: 0.9rem; }
+.spot-card .spot-model { color: var(--muted); font-size: 0.8rem; }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 10;
+}
+.overlay-content {
+  background: var(--card);
+  width: 100%;
+  max-width: 480px;
+  max-height: 88vh;
+  overflow-y: auto;
+  border-radius: 16px 16px 0 0;
+  padding: 1rem;
+  position: relative;
+}
+.overlay-content img { width: 100%; border-radius: 10px; margin-bottom: 0.8rem; }
+.close-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  padding: 0;
+  line-height: 1;
+}
+#detail-fields { margin: 0; }
+#detail-fields dt { color: var(--muted); font-size: 0.75rem; margin-top: 0.5rem; }
+#detail-fields dd { margin: 0; font-size: 1rem; }
+.delete-btn {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  width: 100%;
+  margin-top: 1rem;
+}

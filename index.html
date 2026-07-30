@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Auto Spotter</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0f172a">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <h1>🚗 Auto Spotter</h1>
+</header>
+
+<main>
+  <section id="form-section">
+    <form id="spot-form">
+      <label class="photo-label" for="photo-input">
+        <div id="photo-preview" class="photo-preview">
+          <span id="photo-placeholder">📷 Tik om foto te nemen</span>
+          <img id="photo-img" hidden>
+        </div>
+      </label>
+      <input type="file" id="photo-input" accept="image/*" capture="environment" required>
+
+      <button type="button" id="ai-analyze-btn" hidden>🔍 Laat AI merk/model raden</button>
+      <div id="ai-status" class="ai-status" hidden></div>
+
+      <div class="field-grid">
+        <label>Merk
+          <input type="text" id="merk" placeholder="bv. Ferrari" required>
+        </label>
+        <label>Model
+          <input type="text" id="model" placeholder="bv. 488 GTB">
+        </label>
+        <label>Motor
+          <input type="text" id="motor" placeholder="bv. V8 Biturbo 3.9L">
+        </label>
+        <label>PK
+          <input type="number" id="pk" placeholder="bv. 670" inputmode="numeric">
+        </label>
+        <label>Waarde (€)
+          <input type="number" id="waarde" placeholder="bv. 250000" inputmode="numeric">
+        </label>
+        <label>Waar gezien
+          <input type="text" id="locatie" placeholder="bv. Antwerpen, Meir">
+        </label>
+        <label class="full-width">Hoe zeldzaam?
+          <select id="zeldzaamheid">
+            <option value="Zie ik vaak">Zie ik vaak</option>
+            <option value="Af en toe">Af en toe</option>
+            <option value="Zeldzaam" selected>Zeldzaam</option>
+            <option value="Nog nooit gezien">Nog nooit gezien</option>
+          </select>
+        </label>
+        <label class="full-width">Notities
+          <textarea id="notities" rows="2" placeholder="Extra info..."></textarea>
+        </label>
+      </div>
+
+      <button type="submit" id="save-btn">Opslaan</button>
+    </form>
+  </section>
+
+  <section id="list-section">
+    <div class="list-header">
+      <h2>Mijn spots</h2>
+      <span id="count-badge">0</span>
+    </div>
+    <div id="empty-state" class="empty-state">Nog geen auto's gespot. Maak je eerste foto hierboven!</div>
+    <div id="spot-list"></div>
+  </section>
+</main>
+
+<div id="detail-overlay" class="overlay" hidden>
+  <div class="overlay-content">
+    <button id="close-detail" class="close-btn">✕</button>
+    <img id="detail-img">
+    <dl id="detail-fields"></dl>
+    <button id="delete-btn" class="delete-btn">Verwijderen</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
