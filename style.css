@@ -159,6 +159,9 @@ button {
   justify-content: center;
   z-index: 10;
 }
+.overlay[hidden] {
+  display: none !important;
+}
 .overlay-content {
   background: var(--card);
   width: 100%;
